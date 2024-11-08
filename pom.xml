@@ -160,7 +160,7 @@
     <external.protobuf.version>2.5.0</external.protobuf.version>
     <protobuf.plugin.version>0.5.0</protobuf.plugin.version>
     <commons-io.version>2.11.0</commons-io.version>
-    <avro.version>1.7.7</avro.version>
+    <avro.version>1.11.4</avro.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <!--This property is for hadoops netty. HBase netty
          comes in via hbase-thirdparty hbase-shaded-netty-->
@@ -932,6 +932,19 @@
           </plugin>
         </plugins>
       </build>
+    </profile>
+    <profile>
+      <!-- Use Mac x64 version of protoc for Apple Silicon (aarch64) Macs -->
+      <id>osx-aarch64</id>
+      <activation>
+        <os>
+          <family>mac</family>
+          <arch>aarch64</arch>
+        </os>
+      </activation>
+      <properties>
+        <os.detected.classifier>osx-x86_64</os.detected.classifier>
+      </properties>
     </profile>
   </profiles>
 </project>
